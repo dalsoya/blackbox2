@@ -1,0 +1,34 @@
+package org.techtown.blackbox2;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.widget.ImageView;
+
+public class IntroActivity extends AppCompatActivity {
+    ImageView imageView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_intro);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent); //인트로 실행 후 바로 MainActivity로 넘어감.
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                finish();
+            }
+        }, 2000); //1초 후 인트로 실행
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
+}

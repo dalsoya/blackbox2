@@ -1,0 +1,2 @@
+rootProject.name = "blackBox2"
+include ':app'
